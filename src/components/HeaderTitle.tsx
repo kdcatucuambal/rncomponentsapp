@@ -5,13 +5,14 @@ import {styles} from '../theme/appTheme';
 
 interface Props {
   title: string;
+  size?: number;
 }
 
-const HeaderTitle = ({title}: Props) => {
+const HeaderTitle = ({title, size}: Props) => {
   const {top} = useSafeAreaInsets();
   return (
     <View style={{marginTop: top, marginBottom: 20}}>
-      <Text style={styles.title}>{title}</Text>
+      <Text style={{...styles.title, fontSize: size ? size : 35}}>{title}</Text>
     </View>
   );
 };

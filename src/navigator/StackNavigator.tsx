@@ -7,6 +7,7 @@ import Animation101Screen from '../screens/Animation101Screen';
 import Animation102Screen from '../screens/Animation102Screen';
 import SwitchScreen from '../screens/SwitchScreen';
 import AlertScreen from '../screens/AlertScreen';
+import TextInputScreen from '../screens/TextInputScreen';
 
 //Se establecen lás paginas existentes y el tipo de dato que se
 //va enviar como parametro, si no se envia nada se coloca undefinded
@@ -15,6 +16,7 @@ export type RootStackParams = {
   Animation101Screen: undefined;
   Animation102Screen: undefined;
   SwitchScreen: undefined;
+  TextInputScreen: undefined;
   Screen1: undefined;
   AlertScreen: undefined;
   Screen2: {id: string; name: string};
@@ -34,6 +36,11 @@ const StackNavigator = () => {
       <Stack.Screen name="Screen1" component={Screen1} />
       <Stack.Screen name="Screen2" component={Screen2} />
       <Stack.Screen name="AlertScreen" component={AlertScreen} />
+      <Stack.Screen
+        name="TextInputScreen"
+        component={TextInputScreen}
+        options={{cardStyle: {backgroundColor: 'white'}}}
+      />
       <Stack.Screen
         name="SwitchScreen"
         component={SwitchScreen}
