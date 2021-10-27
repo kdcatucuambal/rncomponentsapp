@@ -8,6 +8,10 @@ import Animation102Screen from '../screens/Animation102Screen';
 import SwitchScreen from '../screens/SwitchScreen';
 import AlertScreen from '../screens/AlertScreen';
 import TextInputScreen from '../screens/TextInputScreen';
+import PullToRefScreen from '../screens/PullToRefScreen';
+import SectionListScreen from '../screens/SectionListScreen';
+import ModalScreen from '../screens/ModalScreen';
+import InfiniteScrollScreen from '../screens/InfiniteScrollScreen';
 
 //Se establecen lás paginas existentes y el tipo de dato que se
 //va enviar como parametro, si no se envia nada se coloca undefinded
@@ -17,6 +21,10 @@ export type RootStackParams = {
   Animation102Screen: undefined;
   SwitchScreen: undefined;
   TextInputScreen: undefined;
+  PullToRefScreen: undefined;
+  SectionListScreen: undefined;
+  ModalScreen: undefined;
+  InfiniteScrollScreen: undefined;
   Screen1: undefined;
   AlertScreen: undefined;
   Screen2: {id: string; name: string};
@@ -45,6 +53,22 @@ const StackNavigator = () => {
         name="SwitchScreen"
         component={SwitchScreen}
         options={{cardStyle: {backgroundColor: 'white'}}}
+      />
+      <Stack.Screen name="PullToRefScreen" component={PullToRefScreen} />
+      <Stack.Screen
+        name="SectionListScreen"
+        component={SectionListScreen}
+        options={{cardStyle: {backgroundColor: 'white'}}}
+      />
+      <Stack.Screen name="ModalScreen" component={ModalScreen} />
+      <Stack.Screen
+        name="InfiniteScrollScreen"
+        component={InfiniteScrollScreen}
+        options={{
+          cardStyle: {
+            backgroundColor: 'white',
+          },
+        }}
       />
     </Stack.Navigator>
   );
