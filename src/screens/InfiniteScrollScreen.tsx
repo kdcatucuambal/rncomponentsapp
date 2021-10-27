@@ -1,6 +1,7 @@
-import React, {useState} from 'react';
-import {FlatList, Text, View, StyleSheet} from 'react-native';
-import HeaderTitle from '../components/HeaderTitle';
+import React, { useState } from "react";
+import { FlatList, Text, View, StyleSheet, Image, ActivityIndicator } from "react-native";
+import HeaderTitle from "../components/HeaderTitle";
+import FadeInImage from "../components/FadeInImage";
 
 const InfiniteScrollScreen = () => {
   const [numbers, setNumbers] = useState([0, 1, 2, 3, 4, 5]);
@@ -13,19 +14,34 @@ const InfiniteScrollScreen = () => {
     setNumbers([...numbers, ...newArray]);
   };
 
-  const renderItem = (item: number) => {
+  const renderItemText = (item: number) => {
     return <Text style={styles.textItem}>{item}</Text>;
   };
 
+  const renderItemImg = (item: number) => {
+    return (
+      <FadeInImage uri={`https://picsum.photos/id/${item}/200/300`} />
+    );
+  };
+
   return (
-    <View style={{flex: 1, backgroundColor: 'red'}}>
+    <View style={{ flex: 1, backgroundColor: "white" }}>
       <FlatList
         data={numbers}
         keyExtractor={item => item.toString()}
-        renderItem={({item}) => renderItem(item)}
-        ListHeaderComponent={<HeaderTitle title="Infinte Scroll" />}
+        renderItem={({ item }) => renderItemImg(item)}
+        ListHeaderComponent={<HeaderTitle title="Infinite Scroll" />}
         onEndReached={() => loadMore()}
         onEndReachedThreshold={0.5}
+        ListFooterComponent={() => (
+          <View style={{
+            height: 150,
+            justifyContent: "center",
+            alignItems: "center",
+            width: "100%"
+          }}>
+            <ActivityIndicator size={25} color="#5856D6" />
+          </View>)}
       />
     </View>
   );
@@ -33,9 +49,9 @@ const InfiniteScrollScreen = () => {
 
 const styles = StyleSheet.create({
   textItem: {
-    backgroundColor: 'green',
-    height: 150,
-  },
+    backgroundColor: "green",
+    height: 150
+  }
 });
 
 export default InfiniteScrollScreen;

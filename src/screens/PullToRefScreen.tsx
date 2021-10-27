@@ -10,10 +10,10 @@ const PullToRefScreen = () => {
   const [data, setData] = useState<string>();
 
   const onRefresh = () => {
-    setData('getting randomic..');
+    setData('getting random..');
     setRefreshing(true);
     setTimeout(() => {
-      console.log('Finsihed');
+      console.log('Finished');
       const random = getRandomArbitrary(0, namesDB.length);
       setData(namesDB[random]);
       setRefreshing(false);

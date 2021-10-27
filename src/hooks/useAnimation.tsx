@@ -1,20 +1,20 @@
-import React, {useRef} from 'react';
-import {Animated, Easing} from 'react-native';
+import React, { useRef } from "react";
+import { Animated, Easing } from "react-native";
 
 const useAnimation = () => {
   const opacity = useRef(new Animated.Value(0)).current;
   const position = useRef(new Animated.Value(0)).current;
 
-  
+
   //Take the current opacity value
-  const fadeIn = () => {
+  const fadeIn = (duration: number = 300) => {
     opacity.setValue(0);
     Animated.timing(opacity, {
       toValue: 1, //al valor que debe ir
-      duration: 300, //Duración de la animación
-      useNativeDriver: true, //Acelerar por hardware
+      duration, //Duración de la animación
+      useNativeDriver: true //Acelerar por hardware
     }).start(() => {
-      console.log('The animation ended');
+      console.log("The animation ended");
     });
   };
 
@@ -22,19 +22,19 @@ const useAnimation = () => {
     Animated.timing(opacity, {
       toValue: 0, //al valor que debe ir
       duration: 300, //Duración de la animación
-      useNativeDriver: true, //Acelerar por hardware
+      useNativeDriver: true //Acelerar por hardware
     }).start();
   };
 
   const startMovingPosition = (
     initPosition: number,
-    duration: number = 3000,
+    duration: number = 3000
   ) => {
     position.setValue(initPosition);
     Animated.timing(position, {
       toValue: 0,
       duration,
-      useNativeDriver: true,
+      useNativeDriver: true
       // easing: Easing.bounce
     }).start();
   };
@@ -44,7 +44,7 @@ const useAnimation = () => {
     fadeOut,
     startMovingPosition,
     opacity,
-    position,
+    position
   };
 };
 
